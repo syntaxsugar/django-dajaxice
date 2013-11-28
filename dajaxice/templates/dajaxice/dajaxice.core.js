@@ -6,7 +6,11 @@ var Dajaxice = {
     {% endwith %}
 
     {% for name, module in dajaxice_config.modules.submodules.items %}
+<<<<<<< HEAD
         {% include "dajaxice/dajaxice_module_loop.js" %},
+=======
+    {% include "dajaxice/dajaxice_module_loop.js" %},
+>>>>>>> upstream/master
     {% endfor %}
 
     get_cookie: function(name)
@@ -43,6 +47,7 @@ var Dajaxice = {
             endpoint = endpoint + '?' + send_data;
         }
         oXMLHttpRequest.open(method, endpoint);
+        oXMLHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_cookie('{{ dajaxice_config.django_settings.CSRF_COOKIE_NAME }}'));
         oXMLHttpRequest.onreadystatechange = function() {
